@@ -1,9 +1,9 @@
 import { MediaRenderer, NFT, useAddress } from "@thirdweb-dev/react";
-import { Coordinates } from "../utils/types/types";
 import L from "leaflet";
 import { useState } from "react";
-import { haversineDistance } from "../lib/haversineDistance";
 import { Marker, Popup } from "react-leaflet";
+import { haversineDistance } from "../lib/haversineDistance";
+import { Coordinates } from "../utils/types/types";
 
 type MarkerComponentProps = {
     nft: NFT;
@@ -17,6 +17,11 @@ const nftIcon = new L.Icon({
     popupAnchor: [1, -34],
 });
 
+/**
+ * NFTMaker Component
+ * @param param0 
+ * @returns 
+ */
 const NFTMarker: React.FC<MarkerComponentProps> = ({ nft, userPosition }) => {
     const address = useAddress();
     const [isClaiming, setIsClaiming] = useState(false);
@@ -27,11 +32,18 @@ const NFTMarker: React.FC<MarkerComponentProps> = ({ nft, userPosition }) => {
     const nftPosition: Coordinates = { lat: latitude, lng: longitude };
     const radius = 0.1;
 
+    /**
+     * check isWithinRadius method
+     * @returns 
+     */
     const isWithinRadius = () => {
         const distance = haversineDistance(userPosition, nftPosition);
         return distance <= radius;
     };
 
+    /**
+     * mint NFT method
+     */
     const claimNFT = async () => {
         setIsClaiming(true);
         try {
@@ -59,7 +71,7 @@ const NFTMarker: React.FC<MarkerComponentProps> = ({ nft, userPosition }) => {
             alert(error.message)
             console.error(error);
         } finally {
-        setIsClaiming(false);
+            setIsClaiming(false);
         }
     };
 
@@ -73,7 +85,9 @@ const NFTMarker: React.FC<MarkerComponentProps> = ({ nft, userPosition }) => {
                     <button
                         disabled={!isWithinRadius() || isClaiming}
                         onClick={claimNFT}
-                    >{isClaiming ? "Claiming NFT..." : "Claim NFT"}</button>
+                    >
+                        {isClaiming ? "Claiming NFT..." : "Claim NFT"}
+                    </button>
                 </div>
             </Popup>
         </Marker>

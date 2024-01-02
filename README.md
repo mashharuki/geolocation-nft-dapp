@@ -35,5 +35,12 @@ To learn more about thirdweb and Next.js, take a look at the following resources
 
 You can check out [the thirdweb GitHub organization](https://github.com/thirdweb-dev) - your feedback and contributions are welcome!
 
-## Youtubeへのリンク
+## デプロイしたコントラクト
+
+[Mumbai - 0x6529a5dE611fAf45e2C26563937549A202f595D3](https://mumbai.polygonscan.com/address/0x6529a5dE611fAf45e2C26563937549A202f595D3)
+
+## Youtube へのリンク
+
 [How to build a web3 Pokemon Go app](https://www.youtube.com/watch?v=-3RFZHZR-Nw)
+[Thirdweb Engine](https://portal.thirdweb.com/engine/getting-started)
+[mapbox 公式サイト](https://www.mapbox.jp/)

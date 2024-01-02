@@ -3,6 +3,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NFT_CONTRACT_ADDRESS } from "../../constants/constants";
 import { haversineDistance } from "../../lib/haversineDistance";
 
+/**
+ * mint NFT API
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method not allowed, please use POST" });
@@ -38,7 +44,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 url: TW_ENGINE_URL,
                 accessToken: TW_ACCESS_TOKEN,
             });
-    
+            
+            // call claim NFT method
             const response = await engine.erc1155.claimTo(
                 "mumbai",
                 NFT_CONTRACT_ADDRESS,
